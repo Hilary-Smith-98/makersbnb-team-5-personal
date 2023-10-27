@@ -33,7 +33,7 @@ constraint fk_spaces foreign key(spaces_id)
 
 );
 
-INSERT INTO users (name, username, password, email, phone_number) VALUES ('Naomi Bloggs', 'Silvakippy369','782993a','Macicman@hotmail.com','01214960879');
+INSERT INTO users (name, username, password, email, phone_number) VALUES ('Naomi Bloggs', 'Silvakippy','securepassword','Macicman@hotmail.com','01214960879');
 INSERT INTO users (name, username, password, email, phone_number) VALUES ('Beata Ekkebert', 'Tomantning1789','A4$N61s','hir_ufizaxe52@yahoo.com','07700900186');
 INSERT INTO users (name, username, password, email, phone_number) VALUES ('Rohese Clarity','Vegetebuck360','j=95J6','duha-gudedo63@outlook.com','01154960210');
 INSERT INTO users (name, username, password, email, phone_number) VALUES ('Adolfo Dalit', 'Draffbrot1708','yuZY020#','jamixi_fajo87@yahoo.com','07700900191');
