@@ -9,7 +9,6 @@
             <h1>Viewing {{user.name}}'s pending Requests:</h1>
             {% if pending_requests==[] %}
                 No requests to approve. <br><br>
-                <a href="/">Back to home?</a>
             {% endif %}
             {% for request in pending_requests%}<br>
             <p>
