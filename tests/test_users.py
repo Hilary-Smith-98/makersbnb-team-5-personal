@@ -5,6 +5,23 @@ from lib.user_class import User
 Call all users
 
 """
+def test_init():
+    user = User('John Smith','Username','pass','user@mail.com','07752738279')
+    assert user.name == 'John Smith'
+    assert user.username == 'Username'
+    assert user.password == 'pass'
+    assert user.email == 'user@mail.com'
+    assert user.phone_number == '07752738279'
+
+def test_eq():
+    user = User('John Smith','Username','pass','user@mail.com','07752738279')
+    user_2 = User('John Smith','Username','pass','user@mail.com','07752738279')
+    assert user == user_2
+
+def test_repr():
+    user = User('John Smith','Username','pass','user@mail.com','07752738279')
+    assert str(user) == 'User: John Smith, Username, pass, user@mail.com, 07752738279)'
+
 def test_add_a_user(db_connection): # See conftest.py to learn what `db_connection` is.
     db_connection.seed("seeds/MAKERSBNB.sql") # Seed our database
     userrepo = UserRepository(db_connection) 
@@ -28,13 +45,7 @@ def test_add_a_user(db_connection): # See conftest.py to learn what `db_connecti
 def test_find_by_id(db_connection):
     db_connection.seed('seeds/MAKERSBNB.sql')
     user_repo = UserRepository(db_connection)
-    print('HERE')
-    print(user_repo.find_by_id(1))
-
-def test_get_bookings(db_connection):
-    db_connection.seed('seeds/MAKERSBNB.sql')
-    user_repo = UserRepository(db_connection)
-    print(user_repo.show_bookings(False, 1))
+    assert user_repo.find_by_id(1) == User('Naomi Bloggs','Silvakippy369','782993a','Macicman@hotmail.com','01214960879', 1)
 
 # """
 # When we call BookRepository#find
