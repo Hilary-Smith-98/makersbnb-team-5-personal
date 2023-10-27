@@ -75,11 +75,20 @@ def send_register():
     username = request.form['Username']
     name = request.form['Name']
     password = request.form['Password']
+    password2 = request.form['Password2']
     email = request.form['Email']
     phone_number = request.form['Phone Number']
-    user_repo.create (name, username, password, email, phone_number)
-    logged_in = user_repo.find_by_username(username)
-    return redirect ('/')
+
+    if password != password2:
+        return render_template ('/register.html',errors ='password error')
+    
+    elif hasattr(user_repo.find_by_username(username), '__dict__'):
+            return render_template ('register.html',errors= 'username error')
+        
+    else:
+        user_repo.create (name, username, password, email, phone_number)
+        logged_in = user_repo.find_by_username(username)
+        return redirect ('/')
 
 
 
