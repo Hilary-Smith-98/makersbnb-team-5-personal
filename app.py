@@ -131,7 +131,7 @@ def get_space(id):
         date_range.append(current_day.date())
         current_day += timedelta(days=1)
     date_list=[date for date in date_range if date not in unavailable_dates]
-    return render_template('space_by_id.html',date_list=date_list,space=singlespace, user = logged_in)
+    return render_template('space_by_id.html',date_list=date_list,unavailable_dates=sorted(unavailable_dates),space=singlespace, user = logged_in)
 
 
 @app.route('/spaces/<id>', methods=['POST'])
