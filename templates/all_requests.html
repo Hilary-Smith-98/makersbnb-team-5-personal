@@ -13,7 +13,7 @@
             {% endif %}
             {% for request in pending_requests%}<br>
             <p>
-            {{request.username}} has requested {{request.name}} on {{request.date_not_available}}<br>
+            {{request.username}} has requested {{request.name}} on {{request.date_not_available.strftime("%B %d %Y")}}<br>
 
             <form action="/approve/{{request.id}}/{{request.date_not_available}}" method="POST"><input type="submit" value="Approve"></form><form action="/deny/{{request.id}}/{{request.date_not_available}}" method="POST"><input type="submit" value="Deny"></form>
             </p>

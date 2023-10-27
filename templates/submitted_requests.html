@@ -12,7 +12,7 @@
     You have no current approved requests
     {% else %}
     {% for request in approved %}
-    Your stay at <a href="/spaces/{{request.id}}">{{request.name}}</a> on {{request.date_not_available.strftime("%d/%m/%y")}} has been {{request.approved}}<br>
+    Your stay at <a href="/spaces/{{request.id}}">{{request.name}}</a> on {{request.date_not_available.strftime("%B %d %Y")}} has been {{request.approved}}<br>
     {% endfor %} 
     {% endif %}
 </p>
@@ -22,7 +22,7 @@
     You have no pending requests
     {% else %}
     {% for request in pending %}
-    Your stay at <a href="/spaces/{{request.id}}">{{request.name}}</a> on {{request.date_not_available.strftime("%d/%m/%y")}} is still {{request.approved}} approval by the host<br>
+    Your stay at <a href="/spaces/{{request.id}}">{{request.name}}</a> on {{request.date_not_available.strftime("%B %d %Y")}} is still {{request.approved}} approval by the host<br>
     {% endfor %}
     {% endif %}
 </p>
@@ -32,7 +32,7 @@
     You have no denied requests
     {% else %}
     {% for request in denied %}
-    Your stay at <a href="/spaces/{{request.id}}">{{request.name}}</a> on {{request.date_not_available.strftime("%d/%m/%y")}} has been  {{request.approved}} by the host <br>
+    Your stay at <a href="/spaces/{{request.id}}">{{request.name}}</a> on {{request.date_not_available.strftime("%B %d %Y")}} has been  {{request.approved}} by the host <br>
     {% endfor %}
     {% endif %}
 </p>
