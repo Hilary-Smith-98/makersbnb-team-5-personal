@@ -2,36 +2,26 @@ from playwright.sync_api import Page, expect
 
 # Tests for your routes go here
 
-"""
-We can render the index page
-"""
-def test_get_index(page, test_web_address):
-    # We load a virtual browser and navigate to the /index page
-    page.goto(f"http://{test_web_address}/index")
+def test_get_homepage_not_logged_in(page, test_web_address):
+    page.goto(f"http://{test_web_address}/")
+    tag = page.locator('h1')
+    expect(tag).to_have_text("Welcome to MakersBnB")
 
-    # We look at the <p> tag
-    strong_tag = page.locator("p")
+def test_get_homepage_logged_in(page, test_web_address):
+    page.goto(f"http://{test_web_address}/login")
+    page.fill('input[name="Username"]', 'Silvakippy369')
+    page.fill('input[name="Password"]', '782993a')
+    page.click('input[type="submit"]')
+    tag = page.locator('Body')
+    expect(tag).to_contain_text('List a new Property')
 
-    # We assert that it has the text "This is the homepage."
-    expect(strong_tag).to_have_text("This is the homepage.")
-
-def test_get_login(page, test_web_address):
-    page.goto(f"http://{test_web_address}/session/new")
-    strong_tag = page.locator("p")
-    expect(strong_tag).to_have_text("Login page")
-
-def test_get_new_space(page, test_web_address):
-    page.goto(f"http://{test_web_address}/spaces/new")
-    strong_tag = page.locator("p")
-    expect(strong_tag).to_have_text("Add a space")
-
-def test_get_requests(page, test_web_address):
-    page.goto(f"http://{test_web_address}/requests")
-    strong_tag = page.locator("p")
-    expect(strong_tag).to_have_text("Page for requests")
-
-def test_get_space_by_id(page, test_web_address):
-    page.goto(f"http://{test_web_address}/spaces/1")
-    strong_tag = page.locator("p")
-    expect(strong_tag).to_have_text("Page for a specific space")
+def test_log_out(page, test_web_address):
+    page.goto(f"http://{test_web_address}/login")
+    page.fill('input[name="Username"]', 'Silvakippy369')
+    page.fill('input[name="Password"]', '782993a')
+    page.click('input[type="submit"]')
+    page.get_by_test_id('Logout').click()
+    tag = page.locator('Body')
+    page.screenshot(path='./tests/playwright/line_58.png')
+    expect(tag).not_to_contain_text('List a new Property')
 
