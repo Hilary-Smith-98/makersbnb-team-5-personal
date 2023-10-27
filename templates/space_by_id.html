@@ -20,7 +20,7 @@
                 {% else %}
                 You have the following days as unavailable:<br>
                 {% for date in unavailable_dates %}
-                    {{ date.strftime("%d/%m/%y") }}<br>
+                    {{ date.strftime("%B %d %Y")}}<br>
                 {% endfor %}
                 {% endif %}
                 <br>
@@ -36,12 +36,13 @@
             <form action="/spaces/{{ space.id }}" method="post">
                 <select name="selected_date">
                     {% for date in date_list %}
-                        <option value="{{ date }}">{{ date.strftime('%d-%m-%Y') }}</option>
+                        <option value="{{ date }}">{{ date.strftime("%B %d %Y") }}</option>
                     {% endfor %}
                 </select>
                 <br>
                 Select the date for your stay and hit submit to request a stay<br>
                 <i>(Stays will have to be approved by hosts before they are confirmed)</i><br>
+                <input type="submit" value="Request Stay">
             </form>
             {% endif %}
         </p>
