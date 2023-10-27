@@ -45,7 +45,7 @@ def test_add_a_user(db_connection): # See conftest.py to learn what `db_connecti
 def test_find_by_id(db_connection):
     db_connection.seed('seeds/MAKERSBNB.sql')
     user_repo = UserRepository(db_connection)
-    assert user_repo.find_by_id(1) == User('Naomi Bloggs','Silvakippy369','782993a','Macicman@hotmail.com','01214960879', 1)
+    assert user_repo.find_by_id(1) == User('Naomi Bloggs','Silvakippy','securepassword','Macicman@hotmail.com','01214960879', 1)
 
 # """
 # When we call BookRepository#find
